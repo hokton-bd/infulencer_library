@@ -11,6 +11,9 @@ class Infulencer extends Model
 
     protected $fillable = [
         'name',
-        
+        'twitter_link',
+        'instagram_link',
+        'youtube_link',
+        'description',
     ];
 }
