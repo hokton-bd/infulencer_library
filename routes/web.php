@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InfulencerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('infulencers')->group(function () {
+    Route::get('/', function () {
+    });
+
+    Route::get('/add', function() {
+        return view('infulencers.add');
+    });
+
+    Route::post('/store', [InfulencerController::class, 'store'])->name('infulencers.store');
+
+});
