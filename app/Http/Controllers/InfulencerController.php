@@ -7,6 +7,12 @@ use App\Models\Infulencer;
 
 class InfulencerController extends Controller
 {
+
+    public function index() {
+        $infulencers = Infulencer::all();
+        return view('infulencers.index', compact('infulencers'));
+    }
+
     public function store(Request $req) {
         $infulencer = new Infulencer;
         $infulencer->name = $req->name;
@@ -16,6 +22,6 @@ class InfulencerController extends Controller
         $infulencer->description = $req->description;
         $infulencer->save();
 
-        return view('infulencers.add');
+        return view('infulencers.index');
     }
 }

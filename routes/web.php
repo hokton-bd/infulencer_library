@@ -19,8 +19,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('infulencers')->group(function () {
-    Route::get('/', function () {
-    });
+    Route::get('/', [InfulencerController::class, 'index'])->name('infulencers.index');
 
     Route::get('/add', function() {
         return view('infulencers.add');
