@@ -22,6 +22,6 @@ class InfulencerController extends Controller
         $infulencer->description = $req->description;
         $infulencer->save();
 
-        return view('infulencers.index');
+        return redirect()->route('infulencers.index');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InfulencerController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,16 @@ Route::prefix('infulencers')->group(function () {
     });
 
     Route::post('/store', [InfulencerController::class, 'store'])->name('infulencers.store');
+
+});
+
+Route::prefix('books')->group(function () {
+    Route::get('/', [BookController::class, 'index'])->name('books.index');
+
+    Route::get('/add', function() {
+        return view('books.add');
+    });
+
+    Route::post('/store', [BookController::class, 'store'])->name('books.store');
 
 });
