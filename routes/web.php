@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function() {
     Route::prefix('infulencers')->group(function() {
         Route::get('/add', function() {
-            return view('infulencers.add');
+            return view('admin.infulencers.add');
         });
     
         Route::post('/store', [InfulencerController::class, 'store'])->name('infulencers.store');
@@ -31,7 +31,7 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('books')->group(function() {
         Route::get('/add', function() {
-            return view('books.add');
+            return view('admin.books.add');
         });
     
         Route::post('/store', [BookController::class, 'store'])->name('books.store');    
