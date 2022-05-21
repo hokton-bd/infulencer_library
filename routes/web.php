@@ -16,7 +16,7 @@ use App\Http\Controllers\BookController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 
@@ -46,5 +46,5 @@ Route::prefix('infulencers')->group(function () {
 
 Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class, 'index'])->name('books.index');
-    
+
 });
