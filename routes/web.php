@@ -16,8 +16,8 @@ use App\Http\Controllers\BookController;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
-});
+    return view('top.index');
+})->name('home');
 
 
 Route::prefix('admin')->group(function() {
