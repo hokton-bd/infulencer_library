@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-5">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">Infulencer Library</a>
@@ -7,13 +8,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">TOP</a>
+                <a class="nav-link active" href="{{ route('home') }}">TOP</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ route('infulencers.index') }}">Infulencers</a>
+                <a class="nav-link" href="{{ route('infulencers.index') }}">Infulencers</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ route('books.index') }}">Books</a>
+                <a class="nav-link" href="{{ route('infulencers.add') }}">追加</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('books.index') }}">Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('books.add') }}">追加</a>
             </li>
         </ul>
         </div>

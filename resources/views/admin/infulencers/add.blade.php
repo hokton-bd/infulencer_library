@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    
+<h1>インフルエンサーを追加する</h1>
 {{ Form::open(['route' => 'infulencers.store']) }}
 {{ Form::text('name', null,['class' => 'display-block form-control size-input-name', 'placeholder' => '名前']) }}
+{{ Form::text('blog_url', null,['class' => 'display-block form-control size-input-name', 'placeholder' => 'ブログのURL']) }}
 {{ Form::text('twitter_link', null,['class' => 'display-block form-control size-input-name', 'placeholder' => 'Twitterのリンク']) }}
 {{ Form::text('youtube_link', null,['class' => 'display-block form-control size-input-name', 'placeholder' => 'You Tubeのリンク']) }}
 {{ Form::text('instagram_link', null,['class' => 'display-block form-control size-input-name', 'placeholder' => 'Instagramのリンク']) }}

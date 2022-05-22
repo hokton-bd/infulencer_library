@@ -17,7 +17,8 @@ class BookController extends Controller
         $book = new Book;
         $book->title = $req->title;
         $book->author = $req->author;
-        $book->book_link = $req->book_link;
+        $book->rakuten_url = $req->rakuten_url;
+        $book->amazon_url = $req->amazon_url;
         $book->description = $req->description;
         $book->image_url = $req->image_url;
         $book->published_date = $req->published_date;

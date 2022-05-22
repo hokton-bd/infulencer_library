@@ -1,16 +1,16 @@
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-</head>
-
+@extends('layouts.app')
+@section('content')
 <div class="w-50">
     {{ Form::open(['route' => 'books.store']) }}
-    {{ Form::text('title', '',['class' => 'form-control size-input-name', 'placeholder' => 'タイトル', 'disabled']) }}
-    {{ Form::text('book_link', null,['class' => 'form-control size-input-name', 'placeholder' => 'リンク', 'disabled']) }}
-    {{ Form::text('author', null,['class' => 'form-control size-input-name', 'placeholder' => '著者', 'disabled']) }}
-    {{ Form::text('image_url', null,['class' => 'form-control size-input-name', 'placeholder' => '画像のURL', 'disabled']) }}
-    {{ Form:: textarea('description', null, ['class' => 'form-control', 'placeholder' => '入力してください', 'rows' => '5', 'disabled']) }}
-    {{ Form::date('published_date', null, ['class' => 'form-control', 'disabled']) }}
+    {{ Form::text('title', '',['class' => 'form-control size-input-name', 'placeholder' => 'タイトル']) }}
+    {{ Form::text('book_link', null,['class' => 'form-control size-input-name', 'placeholder' => 'リンク']) }}
+    {{ Form::text('author', null,['class' => 'form-control size-input-name', 'placeholder' => '著者']) }}
+    {{ Form::text('image_url', null,['class' => 'form-control size-input-name', 'placeholder' => '画像のURL']) }}
+    {{ Form::text('rakuten_url', null,['class' => 'form-control size-input-name', 'placeholder' => '楽天URL']) }}
+    {{ Form::text('amazon_url', null,['class' => 'form-control size-input-name', 'placeholder' => 'AmazonのURL']) }}
+    {{ Form:: textarea('description', null, ['class' => 'form-control', 'placeholder' => '入力してください', 'rows' => '5']) }}
+    {{ Form::date('published_date', null, ['class' => 'form-control']) }}
     {{ Form::submit('送信', ['class'=>'form-control']) }}
     {{ Form::close() }}
 </div>
+@endsection
