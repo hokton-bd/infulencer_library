@@ -21,10 +21,16 @@ class BookController extends Controller
         $book->amazon_url = $req->amazon_url;
         $book->description = $req->description;
         $book->image_url = $req->image_url;
+        $book->isbn = $req->isbn;
         $book->published_date = $req->published_date;
         $book->save();
 
         return redirect()->route('books.index');
+    }
+
+    public function search(Request $req) {
+        $books = Book::where('title', 'like', "%$req->title%")->get();
+        return response()->json([$books]);
     }
 
 }

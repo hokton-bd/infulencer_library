@@ -51,6 +51,8 @@ Route::prefix('infulencers')->group(function () {
 
     Route::get('/show/{id}', [InfulencerController::class, 'show'])->name('infulencers.show');
 
+    Route::post('/show/search', [BookController::class, 'search'])->name('search.books');
+
 });
 
 Route::prefix('books')->group(function () {
