@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Infulencer;
+use App\Models\InfulencerBook;
 
 class BookController extends Controller
 {
@@ -29,8 +31,28 @@ class BookController extends Controller
     }
 
     public function search(Request $req) {
+
+        $books = [];
+        $results = [];
         $books = Book::where('title', 'like', "%$req->title%")->get();
-        return response()->json([$books]);
+        foreach($books as $item) {
+            if(!Book::isRegisteredToInfulencerBookTable($item->id, $req->infulencer_id)) {
+                $results[] = $item;
+            }
+        }
+
+        // return response()->json([$books]);
+        return response()->json([$results]);
     }
+
+    public function test() {
+        // $tmp = new Book;
+        if(!Book::isRegisteredToInfulencerBookTable(7, 4)) {
+            echo 'not';
+        }else {
+            echo 'registered';
+        }
+    }
+
 
 }

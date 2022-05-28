@@ -26,6 +26,7 @@
 
                 <div class="row mb-3">
                     <div class="col-lg-4 col-md-12 mx-auto">
+                        {!! Form::hidden('infulencer_id', 4, ['id' => 'infulencer_id']) !!}
                         {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'search-box', 'placeholder' => 'タイトルで検索']) !!}
                     </div> <!-- ./col-lg-4 -->
                 </div><!-- ./row -->

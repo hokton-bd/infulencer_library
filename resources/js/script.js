@@ -4,13 +4,14 @@ $('#search-books-btn').on('click', function() {
 
     let $target = $('#result');
     let $search_word = $('#search-box').val();
+    let infulencer_id = $('#infulencer_id').val();
     
     $target.empty();
-    AjaxSearchBookList($search_word);
+    AjaxSearchBookList($search_word, infulencer_id);
 
 });
 
-function AjaxSearchBookList($search_word) {
+function AjaxSearchBookList($search_word, infulencer_id) {
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
@@ -19,7 +20,8 @@ function AjaxSearchBookList($search_word) {
         method: 'POST',
         dataType: 'json',
         data: {
-            'title': $search_word
+            'title': $search_word,
+            'infulencer_id': infulencer_id
         },
     })
     //通信成功した時の処理
@@ -35,9 +37,11 @@ function AjaxSearchBookList($search_word) {
             $html += '</li>';
         }
         $target.append($html);
+        console.log(books);
     })
     //通信失敗した時の処理
-    .fail(function () {
+    .fail(function (books) {
+        console.log(books);
         console.log('fail'); 
     });
 };

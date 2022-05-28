@@ -58,3 +58,5 @@ Route::prefix('infulencers')->group(function () {
 Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class, 'index'])->name('books.index');
 });
+
+Route::get('test', [BookController::class, 'test']);

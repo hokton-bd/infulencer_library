@@ -18,4 +18,14 @@ class Book extends Model
         'published_date'
     ];
 
+    public function infulencer_books() {
+        return $this->hasMany(InfulencerBook::class);
+    }
+
+    public static function isRegisteredToInfulencerBookTable($book_id, $infulencer_id) {
+        return InfulencerBook::where('book_id', '=', $book_id)
+                             ->where('infulencer_id', '=', $infulencer_id)
+                             ->exists();
+    }
+
 }
