@@ -2156,6 +2156,100 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/ajax/connect_book_to_infulencer.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/ajax/connect_book_to_infulencer.js ***!
+  \*********************************************************/
+/***/ (() => {
+
+connect_books();
+
+function connect_books() {
+  $(document).ajaxStop(function () {
+    $target = $('.connect-infulencer');
+    $target.on('click', function () {
+      $target.off('click');
+      var infulencer_id = $('#infulencer_id').val();
+      var id = $(this).parent().attr('id');
+      var book_id = id.slice(5);
+      $.ajax({
+        url: 'connect/' + book_id + '/' + infulencer_id,
+        method: 'GET',
+        data: {
+          'book_id': book_id,
+          'infulencer_id': infulencer_id
+        },
+        dataType: 'json'
+      }) //通信成功した時の処理
+      .done(function (data) {
+        $('#' + id).addClass('d-none');
+      }) //通信失敗した時の処理
+      .fail(function (data) {
+        console.log('fail');
+        console.log(data);
+      });
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/ajax/search_unconnect_books.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/ajax/search_unconnect_books.js ***!
+  \*****************************************************/
+/***/ (() => {
+
+search_books();
+
+function search_books() {
+  $('#search-books-btn').on('click', function () {
+    var $target = $('#result');
+    var $search_word = $('#search-box').val();
+    var infulencer_id = $('#infulencer_id').val();
+    $target.empty();
+    AjaxSearchBookList($search_word, infulencer_id);
+  });
+}
+
+function AjaxSearchBookList($search_word, infulencer_id) {
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('input[name="_token"]').val()
+    },
+    url: 'search',
+    method: 'POST',
+    dataType: 'json',
+    data: {
+      'title': $search_word,
+      'infulencer_id': infulencer_id
+    }
+  }) //通信成功した時の処理
+  .done(function (books) {
+    var $target = $('#result');
+    var item = books[0];
+    var $html;
+
+    for (var $i = 0; $i < item.length; $i++) {
+      $html += "<li id=\"book_".concat(item[$i]['id'], "\" class=\"list-group-item\">");
+      $html += "<p class=\"title\">\u30BF\u30A4\u30C8\u30EB: ".concat(item[$i]['title'], "</p>");
+      $html += "<p class=\"author\">\u8457\u8005: ".concat(item[$i]['author'], "</p>");
+      $html += '<button class="btn btn-primary connect-infulencer">追加</button>';
+      $html += '</li>';
+    }
+
+    $target.append($html);
+  }) //通信失敗した時の処理
+  .fail(function (books) {
+    console.log(books);
+    console.log('fail');
+  });
+}
+
+;
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -2165,6 +2259,10 @@ module.exports = {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./script */ "./resources/js/script.js");
+
+__webpack_require__(/*! ./ajax/search_unconnect_books */ "./resources/js/ajax/search_unconnect_books.js");
+
+__webpack_require__(/*! ./ajax/connect_book_to_infulencer */ "./resources/js/ajax/connect_book_to_infulencer.js");
 
 /***/ }),
 
@@ -2207,51 +2305,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
     result = _require.result;
-
-$('#search-books-btn').on('click', function () {
-  var $target = $('#result');
-  var $search_word = $('#search-box').val();
-  var infulencer_id = $('#infulencer_id').val();
-  $target.empty();
-  AjaxSearchBookList($search_word, infulencer_id);
-});
-
-function AjaxSearchBookList($search_word, infulencer_id) {
-  $.ajax({
-    headers: {
-      'X-CSRF-TOKEN': $('input[name="_token"]').val()
-    },
-    url: 'search',
-    method: 'POST',
-    dataType: 'json',
-    data: {
-      'title': $search_word,
-      'infulencer_id': infulencer_id
-    }
-  }) //通信成功した時の処理
-  .done(function (books) {
-    var $target = $('#result');
-    var item = books[0];
-    var $html;
-
-    for (var $i = 0; $i < item.length; $i++) {
-      $html += '<li class="list-group-item">';
-      $html += "<p class=\"title\">\u30BF\u30A4\u30C8\u30EB: ".concat(item[$i]['title'], "</p>");
-      $html += "<p class=\"author\">\u8457\u8005: ".concat(item[$i]['author'], "</p>");
-      $html += '<span class="btn btn-primary">追加</span>';
-      $html += '</li>';
-    }
-
-    $target.append($html);
-    console.log(books);
-  }) //通信失敗した時の処理
-  .fail(function (books) {
-    console.log(books);
-    console.log('fail');
-  });
-}
-
-;
 
 /***/ }),
 

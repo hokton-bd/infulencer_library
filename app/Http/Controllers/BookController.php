@@ -31,7 +31,6 @@ class BookController extends Controller
     }
 
     public function search(Request $req) {
-
         $books = [];
         $results = [];
         $books = Book::where('title', 'like', "%$req->title%")->get();
@@ -41,17 +40,7 @@ class BookController extends Controller
             }
         }
 
-        // return response()->json([$books]);
         return response()->json([$results]);
-    }
-
-    public function test() {
-        // $tmp = new Book;
-        if(!Book::isRegisteredToInfulencerBookTable(7, 4)) {
-            echo 'not';
-        }else {
-            echo 'registered';
-        }
     }
 
 

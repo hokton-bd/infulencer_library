@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InfulencerController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\InfulencerBookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,10 +54,12 @@ Route::prefix('infulencers')->group(function () {
 
     Route::post('/show/search', [BookController::class, 'search'])->name('search.books');
 
+    Route::get('/show/connect/{book_id}/{infulencer_id}', [InfulencerBookController::class, 'connect'])->name('connect.books');
+
 });
 
 Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class, 'index'])->name('books.index');
 });
 
-Route::get('test', [BookController::class, 'test']);
+Route::get('test/{book_id}/{infulencer_id}', [InfulencerBookController::class, 'connect']);

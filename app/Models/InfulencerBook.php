@@ -9,6 +9,11 @@ class InfulencerBook extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'book_id',
+        'infulencer_id'
+    ];
+
     /**
      * Get the books that owns the InfulencerBook
      *
@@ -18,5 +23,12 @@ class InfulencerBook extends Model
     {
         return $this->belongsTo(Book::class);
     }
+    
+    // public static function create($book_id, $infulencer_id) {
+    //     return InfulencerBook::create([
+    //         'book_id' => $book_id,
+    //         'infulencer_id' => $infulencer_id
+    //     ]);
+    // }
 
 }
