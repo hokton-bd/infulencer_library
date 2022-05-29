@@ -23,12 +23,15 @@ class InfulencerBook extends Model
     {
         return $this->belongsTo(Book::class);
     }
-    
-    // public static function create($book_id, $infulencer_id) {
-    //     return InfulencerBook::create([
-    //         'book_id' => $book_id,
-    //         'infulencer_id' => $infulencer_id
-    //     ]);
-    // }
+
+    /**
+     * Get the infulencers that owns the InfulencerBook
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function infulencers(): BelongsTo
+    {
+        return $this->belongsTo(Infulencer::class);
+    }
 
 }

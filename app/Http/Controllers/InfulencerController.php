@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Infulencer;
+use App\Models\InfulencerBook;
+use App\Models\Book;
 
 class InfulencerController extends Controller
 {
@@ -20,8 +22,12 @@ class InfulencerController extends Controller
 
     public function show($id) {
         $infulencer = $this->getInfulencer($id);
-
-        return view('infulencers.show', compact('infulencer'));
+        $connected_books = InfulencerBook::where('infulencer_id', $id)->get();
+        $books = [];
+        foreach($connected_books as $item) {
+            $books[] = Book::find($item->book_id);
+        }
+        return view('infulencers.show', compact('infulencer', 'books'));
     }
 
     public function store(Request $req) {

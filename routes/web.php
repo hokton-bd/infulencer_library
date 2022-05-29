@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->group(function() {
+
     Route::prefix('infulencers')->group(function() {
         Route::get('/add', function() {
             return view('admin.infulencers.add');
@@ -45,6 +46,7 @@ Route::prefix('admin')->group(function() {
         Route::post('/store', [BookController::class, 'store'])->name('books.store');    
 
     });
+    
 });
 
 Route::prefix('infulencers')->group(function () {

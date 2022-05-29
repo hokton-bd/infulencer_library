@@ -4,19 +4,39 @@
     <section class="section infulencer_desc mb-5" id="infulencer_desc">
         <div class="container-fluid">
 
-            <div class="row mb-3 d-flex justify-content-between">
-                <div class="col-4">
-                    {{-- <h2>{{ $infulencer->name }}</h2> --}}
-                    <div class="image-box"><img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" alt="" srcset=""></div>
+            <div class="row mb-3 d-flex justify-content-center">
+                <div class="col-3">
+                    <h2>{{ $infulencer_name = $infulencer->name }}</h2>
+                    <div class="image-box"><img src="{{ $infulencer->image_url }}" alt="{{ $infulencer_name }}さんの画像"></div>
                 </div>
-                <div class="col-4">
-                    {{-- <p><a href="{{ $infulencer->blog_url }}" class="blog_url">ブログ</a></p>
-                    <p><a href="{{ $infulencer->twitter_link }}" class="twitter_link">Twitter</a></p>
-                    <p><a href="{{ $infulencer->youtube_link }}" class="youtube_link">YouTube</a></p> --}}
+                <div class="col-4 d-flex flex-column">
+                    <div class="row">
+                        <p>{{ $infulencer->description }}</p>
+                    </div>
+
+                    <div class="row">
+                        <p class=" col-4"><a href="{{ $infulencer->blog_url }}" class="blog_url">ブログ</a></p>
+                        <p class=" col-4"><a href="{{ $infulencer->twitter_link }}" class="twitter_link">Twitter</a></p>
+                        <p class=" col-4"><a href="{{ $infulencer->youtube_link }}" class="youtube_link">YouTube</a></p>
+                    </div>
                 </div>
             </div>
 
         </div>
+    </section>
+
+    <section class="section recommend-books" id="recommenc-books">
+        <div class="container-fluid px-5 mx-5">
+
+            <h2>{{ $infulencer_name }}さんおすすめの本</h2>
+
+            <div class="row">
+
+                @include('layouts.components.recommend', ['books' => $books])
+            
+            </div><!-- ./row -->
+
+        </div><!-- ./container-fulid -->
     </section>
     
     <section class="section connect_books" id="connect_books">

@@ -23,118 +23,17 @@
     <div class="container-fluid">
 
         <div class="row">
-
-            <div class="col-lg-3 col-md-1 mb-3">
+          @foreach ($infulencers as $item)
+            <a href="{{ route('infulencers.show', ['id' => $item->id]) }}" class="col-lg-3 col-md-1 mb-3 d-block">
               <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
+                <img src="{{ $item->image_url }}" class="card-img-top" alt="{{ $item->name }}さんの画像">
                 <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
+                  <h5 class="card-title">{{ $item->name }}</h5>
+                  <p class="card-text">{{ $item->description }}</p>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-1 mb-3">
-              <div class="card">
-                <img src="https://pbs.twimg.com/profile_images/1441258621900263426/A8FZxP43_400x400.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">マナブ</h5>
-                  <p class="card-text">ブロガー。SEOの知識がすごい。よくバンコクにいる。</p>
-                </div>
-              </div>
-            </div>
-
+            </a>
+          @endforeach
           </div><!-- ./row -->
 
     </div>
