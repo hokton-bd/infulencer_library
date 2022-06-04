@@ -13,15 +13,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('infulencers.index') }}">Infulencers</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('infulencers.add') }}">追加</a>
-            </li>
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('infulencers.add') }}">追加</a>
+                </li>
+            @endauth
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('books.index') }}">Books</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('books.add') }}">追加</a>
-            </li>
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('books.add') }}">追加</a>
+                </li>
+                {!! Form::open(['route' => 'logout', 'name' => 'logout']) !!}
+                <li class="nav-item">
+                    <a href="javascript:logout.submit()" class="nav-link">ログアウト</a>
+                </li>
+                {!! Form::close() !!}
+            @endauth
         </ul>
         </div>
     </div>
