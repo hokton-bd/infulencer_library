@@ -23,12 +23,6 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function() {
 
-    Route::get('login', function() {
-        return view('admin.login');
-    });
-
-    Route::post('login', [UserController::class, 'login'])->name('login');
-
     Route::prefix('infulencers')->group(function() {
         Route::get('/add', function() {
             return view('admin.infulencers.add');
