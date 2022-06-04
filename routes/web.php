@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\InfulencerController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\InfulencerBookController;
@@ -20,8 +21,13 @@ Route::get('/', function () {
     return view('top.index');
 })->name('home');
 
-
 Route::prefix('admin')->group(function() {
+
+    Route::get('login', function() {
+        return view('admin.login');
+    });
+
+    Route::post('login', [UserController::class, 'login'])->name('login');
 
     Route::prefix('infulencers')->group(function() {
         Route::get('/add', function() {
@@ -62,6 +68,12 @@ Route::prefix('infulencers')->group(function () {
 
 Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class, 'index'])->name('books.index');
+
+    Route::get('/show/{id}', [BookController::class, 'show'])->name('books.show');
 });
 
 Route::get('test/{book_id}/{infulencer_id}', [InfulencerBookController::class, 'connect']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -9,10 +9,18 @@ use App\Models\InfulencerBook;
 
 class BookController extends Controller
 {
+    public function getBook($id) {
+        return Book::find($id);
+    }
     
     public function index() {
         $books = Book::all();
         return view('books.index', compact('books'));
+    }
+
+    public function show($id) {
+        $book = $this->getBook($id);
+        return view('books.show', compact('book'));
     }
 
     public function store(Request $req) {
