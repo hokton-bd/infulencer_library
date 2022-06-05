@@ -19,32 +19,34 @@ use App\Http\Controllers\InfulencerBookController;
 
 Route::get('/', function () {
     return view('top.index');
-})->name('home');
+})->name('top');
 
 Route::prefix('admin')->group(function() {
+    Route::middleware(['auth'])->group(function () {
+        
+        Route::prefix('infulencers')->group(function() {
+            Route::get('/add', function() {
+                return view('admin.infulencers.add');
+            })->name('infulencers.add');
 
-    Route::prefix('infulencers')->group(function() {
-        Route::get('/add', function() {
-            return view('admin.infulencers.add');
-        })->name('infulencers.add');
+            Route::post('/connect', [InfulencerController::class, 'connect'])->name('infulencers.connect');
+        
+            Route::post('/store', [InfulencerController::class, 'store'])->name('infulencers.store');
 
-        Route::post('/connect', [InfulencerController::class, 'connect'])->name('infulencers.connect');
-    
-        Route::post('/store', [InfulencerController::class, 'store'])->name('infulencers.store');
+            Route::get('/edit/{id}', [InfulencerController::class, 'show'])->name('infulencers.edit');
 
-        Route::get('/edit/{id}', [InfulencerController::class, 'show'])->name('infulencers.edit');
+            Route::post('/update/{id}', [InfulencerController::class, 'update'])->name('infulencers.update');
 
-        Route::post('/update/{id}', [InfulencerController::class, 'update'])->name('infulencers.update');
+        });
 
-    });
+        Route::prefix('books')->group(function() {
+            Route::get('/add', function() {
+                return view('admin.books.add');
+            })->name('books.add');
+        
+            Route::post('/store', [BookController::class, 'store'])->name('books.store');    
 
-    Route::prefix('books')->group(function() {
-        Route::get('/add', function() {
-            return view('admin.books.add');
-        })->name('books.add');
-    
-        Route::post('/store', [BookController::class, 'store'])->name('books.store');    
-
+        });
     });
     
 });

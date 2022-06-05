@@ -1,16 +1,19 @@
 @extends('layouts.app')
 @section('content')
-<div class="w-50">
-    {{ Form::open(['route' => 'books.store']) }}
-    {{ Form::text('title', '',['class' => 'form-control size-input-name', 'placeholder' => 'タイトル']) }}
-    {{ Form::text('author', null,['class' => 'form-control size-input-name', 'placeholder' => '著者']) }}
-    {{ Form::text('image_url', null,['class' => 'form-control size-input-name', 'placeholder' => '画像のURL']) }}
-    {{ Form::text('rakuten_url', null,['class' => 'form-control size-input-name', 'placeholder' => '楽天URL']) }}
-    {{ Form::text('amazon_url', null,['class' => 'form-control size-input-name', 'placeholder' => 'AmazonのURL']) }}
-    {{ Form::text('isbn', null,['class' => 'form-control size-input-name', 'placeholder' => 'ISBN']) }}
-    {{ Form:: textarea('description', null, ['class' => 'form-control', 'placeholder' => '入力してください', 'rows' => '5']) }}
-    {{ Form::date('published_date', null, ['class' => 'form-control']) }}
-    {{ Form::submit('送信', ['class'=>'form-control']) }}
-    {{ Form::close() }}
-</div>
+    <section class="book-search">
+        <div class="container-fluid">
+            <div class="row">
+                {{ Form::text('title', '',['id' => 'title', 'class' => 'form-control size-input-name', 'placeholder' => 'タイトル']) }}
+                    <span class="btn btn-primary" id="search-books">検索</span>
+            </div><!-- ./row -->
+        
+            <div class="row">
+                {{ Form::open(['route' => 'books.store']) }}
+                    <div id="book-list" class="book-list d-flex justify-content-start flex-wrap">
+        
+                    </div>
+                {{ Form::close() }}
+            </div>
+        </div><!-- ./container-fluid -->
+    </section>
 @endsection
