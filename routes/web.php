@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function() {
                 return view('admin.books.add');
             })->name('books.add');
         
-            Route::post('/store', [BookController::class, 'store'])->name('books.store');    
+            Route::get('/store', [BookController::class, 'store'])->name('books.store');    
 
         });
     });
