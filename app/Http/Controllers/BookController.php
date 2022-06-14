@@ -24,18 +24,17 @@ class BookController extends Controller
     }
 
     public function store(Request $req) {
-        $book = new Book;
-        $book->title = $req->title;
-        $book->author = $req->author;
-        $book->rakuten_url = $req->rakuten_url;
-        $book->amazon_url = $req->amazon_url;
-        $book->description = $req->description;
-        $book->image_url = $req->image_url;
-        $book->isbn = $req->isbn;
-        $book->published_date = $req->published_date;
-        $book->save();
+        $book = Book::create([
+            'title' => $req->title,
+            'description' => $req->description,
+            'isbn' => $req->isbn,
+            'amazon_url' => $req->amazon_url,
+            'rakuten_url' => $req->rakuten_url,
+            'image_url' => $req->image_url,
+            'author' => $req->author,
+        ]);
 
-        return redirect()->route('books.index');
+        return response()->json(['result' => 'true']);
     }
 
     public function search(Request $req) {

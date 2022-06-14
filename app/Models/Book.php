@@ -12,10 +12,12 @@ class Book extends Model
     protected $fillable = [
         'title',
         'author',
-        'book_link',
+        'rakuten_url',
+        'amazon_url',
         'description',
         'image_url',
-        'published_date'
+        'published_date',
+        'isbn'
     ];
 
     public function infulencer_books() {
